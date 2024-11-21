@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+
+{% block page_title %}
+Patient information{% endblock %}
+
+{% block content %}
+
+<section id="search_section">
+    <header id="main-navigation">
+        <h2><a href="">search Patient</a></h2>
+        
+    </header>
+
+    <form action="/patients/" method="GET">
+        <label for="id">Search by ID:</label>
+        <input type="text" name="id" id="search" placeholder="Enter ID">
+        <label for="surname">Search by Surname:</label>
+        <input type="text" name="surname" id="search" placeholder="Enter surname">
+        <button type="submit">Search</button>
+    </form>
+</section>
+
+<section id="patient_info">
+    <header id="main-navigation">
+        <h2><a href="">Patient Information</a></h2>
+    </header>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Surname</th>
+        </section>
+
+
+
+{% endblock %}
+
