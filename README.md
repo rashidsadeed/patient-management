@@ -16,6 +16,7 @@ afterwards install django your system using the follwing command:
 
 to make sure you have Django installed on your system, run the following command:
 > import django
+ 
 > print(django.get_version())
 
 **running the application**
