@@ -10,6 +10,40 @@
     {% block scripts %}{% endblock %}
 </head>
 <body>
+
+    <div id="sidebar" class="sidenav">
+        <a href="/appointment">Appoinment</a>
+        <a href="room">Room Reservations</a>
+        <a href="visitor">Visitors</a>
+    </div>
+
+    <!-- Toggle Button -->
+    <button id="toggle-button" class="toggle-button">&#9776;</button>
+
+    <div class="content">
+        
+        {% block sidebar_content %}{% endblock %}
+    </div>
+
+    <!--{% block additional_scripts %}-->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButton = document.getElementById('toggle-button');
+            const sidebar = document.getElementById('sidebar');
+            const content = document.querySelector('.content')
+
+            toggleButton.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+                document.querySelector('.content').classList.toggle('active');
+            });
+        });
+    </script>
+  <!--  {% endblock %} -->
+
+
+
+
+
     
     {% block content %}{% endblock%}
 </body>

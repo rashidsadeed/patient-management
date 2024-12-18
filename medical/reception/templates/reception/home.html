@@ -1,14 +1,14 @@
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main</title>
-    <link rel="stylesheet" href="{% static 'reception/styles.css' %}">
-    <script>
+{% block page_title %}Main{% endblock %}
 
+{% block css-styles %}
+    <link rel="stylesheet" href="{% static 'reception/styles.css' %}">
+{% endblock %}
+
+{% block scripts %}
+    <script>
         // Javascript to update the date and time
         function updateDateTime() {
             var now = new Date();
@@ -19,19 +19,18 @@
         }
         setInterval(updateDateTime, 1000);
         window.onload = updateDateTime;
-
-        
     </script>
-</head>
-<body>
+{% endblock %}
+
+{% block content %}
     <div class="container">
         <div class="date-time">
             <div id="current-date"></div>
             <div id="current-time"></div>            
-            </div>
+        </div>
         <div class="user-info">
             <div class="user-details">
-                <div class="user-name">Alex ferrara</div>
+                <div class="user-name">Alex Ferrara</div>
                 <div class="user-id">534563</div>
             </div>
             <div class="icon-container">
@@ -43,9 +42,7 @@
             <div class="button button-2">Search Patient</div>
             <div class="button button-3">Emergency Patient</div>
             <div class="button button-4">Visitor Management</div>
-            <div class="button button-5">Doctor/Room Availabilty</div>
-            
+            <div class="button button-5">Doctor/Room Availability</div>
         </div>
     </div>
-</body>
-</html>
+{% endblock %}
