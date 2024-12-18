@@ -21,7 +21,7 @@
     <!-- Toggle Button -->
     <button id="toggle-button" class="toggle-button">&#9776;</button>
 
-    <div class="content">
+    <div class="content active">
         
         {% block sidebar_content %}{% endblock %}
     </div>
@@ -31,13 +31,18 @@
         document.addEventListener('DOMContentLoaded', function() {
             const toggleButton = document.getElementById('toggle-button');
             const sidebar = document.getElementById('sidebar');
-            const content = document.querySelector('.content')
-
+            const content = document.querySelector('.content');
+        
+            // Sidebar starts collapsed
+            sidebar.classList.add('active');
+            content.classList.add('active');
+        
             toggleButton.addEventListener('click', function() {
                 sidebar.classList.toggle('active');
-                document.querySelector('.content').classList.toggle('active');
+                content.classList.toggle('active');
             });
         });
+        
     </script>
   <!--  {% endblock %} -->
 
