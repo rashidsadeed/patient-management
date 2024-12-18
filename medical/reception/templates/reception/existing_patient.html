@@ -15,7 +15,7 @@ Patient information{% endblock %}
         
     </header>
 
-    <form action="/patients/" method="GET">
+    <form action="" method="GET">
         <label for="id">Search by ID:</label>
         <input type="text" name="id" id="search" placeholder="Enter ID">
         <label for="surname">Search by Surname:</label>
@@ -25,14 +25,25 @@ Patient information{% endblock %}
 </section>
 
 <section id="patient_info">
-    <header id="main-navigation">
-        <h2><a href="">Patient Information</a></h2>
-    </header>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Surname</th>
+   
+    <h2>Search Results</h2>
+    {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+    {% elif patient %}
+    <ul>
+            <li>{{ patient.patient_id }}</li>
+            <li>{{ patient.patient_name }}</li>
+            <li>{{ patient.patient_surname }}</li>
+            <li>{{ patient.patient_phone }}</li>
+            <li>{{ patient.patient_address }}</li>
+            <li>{{ patient.patient_birthdate }}</li>
+            <li>{{ patient.gender }}</li>
+
+
+
+    </ul>
+    {% endif %}
+
         </section>
 
 
