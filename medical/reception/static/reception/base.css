@@ -1,0 +1,123 @@
+
+/* Sidebar */
+.sidenav {
+    width: 250px;
+    background-color: #0056b3;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: transform 0.3s ease;
+    transform: translateX(0); 
+    z-index: 1000;
+    padding-top: 50px;
+}
+
+.sidenav a{
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;    
+    color: #000000;
+    display: block;
+}
+
+.sidenav a:hover{
+    color: #ffffff;
+}
+
+.sidenav.active {
+    transform: translateX(-100%); 
+}
+
+
+.sidenav1{
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #0056b3;
+    overflow-x: hidden;
+    padding-top: 20px;   
+}
+
+.sidenav1 a{
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #000000;
+    display: block;
+}
+
+
+/* Toggle Button */
+
+.toggle-button {
+    font-size: 20px;
+    background: none;
+    border: none;
+    color: #333; 
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    z-index: 1500; 
+}
+
+.content {
+    margin-left: 250px;
+    transition: margin-left 0.3s ease;
+    transition: margin-left 0.3 ease-in-out;
+}
+
+.content.active {
+    margin-left: 0; 
+}
+
+.content {
+    margin-left: 250px;
+    padding: 20px;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.buttons-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+
+.button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    flex: 1 1 calc(33.33% - 30px); 
+    box-sizing: border-box;
+}
+
+.user-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+
+.user-details {
+    flex: 1;
+}
+
+
+
+.icon-container {
+    width: 50px;
+    height: 50px;
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+
