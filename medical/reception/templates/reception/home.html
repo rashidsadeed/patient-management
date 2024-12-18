@@ -38,11 +38,24 @@
             </div>
         </div>
         <div class="buttons-container">
-            <div class="button button-1">Enroll Patient</div>
-            <div class="button button-2">Search Patient</div>
-            <div class="button button-3">Emergency Patient</div>
-            <div class="button button-4">Visitor Management</div>
-            <div class="button button-5">Doctor/Room Availability</div>
+            <div class="button button-1">
+            <a href="{% url  "new_patient" %}"> 
+                Enroll Patient
+            </a>
+            </div>
+            <div class="button button-2">
+                <a href="{% url  "existing_patient" %}">Search Patient
+                </a>
+                </div>
+            <div class="button button-3">
+                <a href="{% url  "emergency" %}">Emergency Patient
+                </a></div>
+            <div class="button button-4">
+                <a href="{% url  "visitors" %}">Visitor Management
+                </a></div>
+            <div class="button button-5">
+                <a href="{% url  "appointments_and_reservations" %}">Doctor/Room Availability
+                </a></div>
         </div>
     </div>
 {% endblock %}
