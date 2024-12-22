@@ -31,18 +31,22 @@ def new_patient(request):
     return render(request, 'reception/new_patient.html', {"success":success})
 
 def existing_patient(request):
-    patient_id = request.GET.get('id')
-    surname = request.GET.get('surname')
+    patient_id = request.GET.get('search_id')
+    name = request.GET.get('search_name')
+    surname = request.GET.get('search_surname')
     this_patient = None
     error_message = None
     
     try:
-        if patient_id:
+        if patient_id and surname:
+            this_patient = Patient.objects.get(patient_id=patient_id, patient_surname=surname)
+        elif patient_id:
             this_patient = Patient.objects.get(patient_id=patient_id)
         elif surname:
             this_patient = Patient.objects.get(patient_surname=surname)
-        elif patient_id and surname:
-            this_patient = Patient.objects.get(patient_id=patient_id, patient_surname=surname)
+        else:
+            this_patient = Patient.objects.get(patient_name=name)
+        
             
     except Patient.DoesNotExist:
         error_message = "Patient not found."
