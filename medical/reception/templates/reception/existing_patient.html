@@ -9,6 +9,11 @@ Patient information{% endblock %}
 
 {% block content %}
 
+{% block css-styles %}
+    <link rel="stylesheet" href="{% static 'reception/styles.css' %}">
+{% endblock %}
+
+
 <section id="search_section">
     <header id="main-navigation">
         <h2><a href="">search Patient</a></h2>
@@ -16,11 +21,24 @@ Patient information{% endblock %}
     </header>
 
     <form action="" method="GET">
-        <label for="id">Search by ID:</label>
-        <input type="text" name="id" id="search" placeholder="Enter ID">
-        <label for="surname">Search by Surname:</label>
-        <input type="text" name="surname" id="search" placeholder="Enter surname">
-        <button type="submit">Search</button>
+        <div class="search_form_group">
+            <label for="id">Search by ID:</label>
+            <input type="text" name="search_form_group" id="search_form_group" placeholder="Enter ID">
+        </div>
+
+        <div class="search_form_group">
+            <label for="search_name">Name</label>
+            <input type="text" name="search_name" id="search_name" placeholder="Enter Name">
+        </div>
+
+        <div class="search_form_group">
+            <label for="search_surname">Search by Surname:</label>
+            <input type="text" name="search_surname" id="search_surname" placeholder="Enter surname">
+        </div>
+
+        <div class="search_form_group">
+            <button type="submit">Search</button>
+        </div>
     </form>
 </section>
 
@@ -44,9 +62,7 @@ Patient information{% endblock %}
     </ul>
     {% endif %}
 
-        </section>
-
-
+</section>
 
 {% endblock %}
 

@@ -1,32 +1,115 @@
 
+/* general styles */
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f8fb;
+    color: #333;
+}
+
+/* container */
+
+.container{
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* date and time */
+.date-time{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0056b3;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.date-time div{
+    font-weight: bold;
+}
+
+
+/* user */
+
+.user-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.user-details {
+    font-size: 18px;
+}
+
+.user-name {
+    font-weight: bold;
+    color: #0056b3;
+}
+
+.user-id {
+    font-size: 14px;
+    color: #666;
+}
+
+.icon-container {
+    width: 50px;
+    height: 50px;
+    background-color: #ddd;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: #333;
+}
+
+
+
+
+
+
+
+
+
+
 /* Sidebar */
 .sidenav {
-    width: 250px;
-    background-color: #0056b3;
-    height: 100vh;
-    position: fixed;
+    width: 200px; 
+    background-color: #003f7f; 
+    color: white; 
+    height: 100vh; 
+    position: fixed; 
     top: 0;
     left: 0;
-    transition: transform 0.3s ease;
-    transform: translateX(0); 
+    padding-top: 50px; 
     z-index: 1000;
-    padding-top: 50px;
 }
 
 .sidenav.active {
     transform: translateX(-100%);
 }
 
-.sidenav a{
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 25px;    
-    color: #000000;
-    display: block;
+.sidenav a {
+    padding: 10px 15px; 
+    font-size: 18px; 
+    color: white; 
+    text-decoration: none; 
+    display: block; 
 }
 
 .sidenav a:hover{
     color: #ffffff;
+    background-color: #0056b3;
 }
 
 .sidenav.active {
@@ -58,15 +141,26 @@
 /* Toggle Button */
 
 .toggle-button {
-    font-size: 20px;
-    background: none;
-    border: none;
-    color: #333; 
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    cursor: pointer;
+    font-size: 16px; 
+    width: 40px; 
+    height: 40px; 
+    background: #0056b3; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    position: fixed; 
+    top: 10px; 
+    left: 10px;
     z-index: 1500; 
+    cursor: pointer; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+.toggle-button:hover {
+    background-color: #003f7f; 
 }
 
 .content {
@@ -75,14 +169,14 @@
     transition: margin-left 0.3 ease-in-out;
 }
 
-.content.active {
-    margin-left: 0; 
+.content {
+    margin-left: 200px; 
+    padding: 20px; 
+    transition: margin-left 0.3s ease-in-out; 
 }
 
-.content {
-    margin-left: 250px;
-    padding: 20px;
-    transition: margin-left 0.3s ease-in-out;
+.content.active {
+    margin-left: 0; 
 }
 
 .buttons-container {
@@ -104,24 +198,5 @@
     box-sizing: border-box;
 }
 
-.user-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 20px;
-}
 
-
-.user-details {
-    flex: 1;
-}
-
-
-
-.icon-container {
-    width: 50px;
-    height: 50px;
-    background-color: #ffffff;
-    border-radius: 50%;
-}
 

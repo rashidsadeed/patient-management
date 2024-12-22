@@ -5,12 +5,18 @@
 
 
 {% block page_title %}
-Enroll Patient{% endblock %}
+Enroll Patient
+{% endblock %}
 
 {% block content %}
 
+{% block css-styles %}
+    <link rel="stylesheet" href="{% static 'reception/styles.css' %}">
+{% endblock %}
+
+<link rel="stylesheet" href="">
 <section id="welcome">
-    <h1>Register New Patient</h1>
+    <h1>New Patient</h1>
     <form action="" method="POST">
         {% csrf_token %}
         <label for="patient_tc">TC:</label>
@@ -23,7 +29,7 @@ Enroll Patient{% endblock %}
         <input type="text" name="patient_surname" id="patient_surname" required><br>
 
         <label for="patient_phone">Phone:</label>
-        <input type="text" name="patient_phone" id="patient_phone" required><br>
+        <input type="tel" name="patient_phone" id="patient_phone"  placeholder="+90 (5_ _) (_ _ _) (_ _) (_ _)" required><br>
 
         <label for="patient_address">Address:</label>
         <input type="text" name="patient_address" id="patient_address" required><br>
@@ -39,6 +45,24 @@ Enroll Patient{% endblock %}
 
         <button type="submit">Register</button>
     </form>
+
+    
+<script>
+    const phoneInput = document.getElementById('patient_phone');
+        phoneInput.addEventListener('input', (e) => {
+            const value = e.target.value.replace(/\D/g, ''); 
+            const formattedValue = '+90 (' +
+                (value.substring(0, 3) || '') +
+                ') ' +
+                (value.substring(3, 6) || '') +
+                ' ' +
+                (value.substring(6, 8) || '') +
+                ' ' +
+                (value.substring(8, 10) || '');
+            e.target.value = formattedValue.trim();
+    });
+
+</script>
 
 </section>
 

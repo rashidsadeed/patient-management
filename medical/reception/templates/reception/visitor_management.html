@@ -9,10 +9,62 @@ visitor checkin{% endblock %}
 
 {% block content %}
 
+{% block css-styles %}
+    <link rel="stylesheet" href="{% static 'reception/styles.css' %}">
+{% endblock %}
+
+
+ 
 <section id="welcome">
     <header id="main-navigation">
-        <h2><a href="">isnert visitor info</a></h2>
-        
+        <h2><a href=""> Isnert visitor info </a></h2>
     </header>
+
+    <form action="" method="post">
+
+        <div class="visitor_form_group">
+            <label for="visitor_tc">TC:</label>
+            <input type="text" name="visitor_tc" id="visitor_tc" required><br>
+        </div>
+
+        <div class="visitor_form_group">
+            <label for="visitor_name">Name:</label>
+            <input type="text" name="visitor_name" id="visitor_name" required><br>
+        </div>
+
+        <div class="visitor_form_group">
+            <label for="visitor_surname">Surname:</label>
+            <input type="text" name="visitor_surname" id="visitor_surname" required><br>
+        </div>
+
+        <div class="visitor_form_group">
+            <label for="visitor_phone">Phone:</label>
+            <input type="tel" name="visitor_phone" id="visitor_phone"  placeholder="+90 (5_ _) (_ _ _) (_ _) (_ _)" required><br>
+        </div>
+
+        <div class="visitor_form_group">
+            <label for="visitor_closeness">Closeness</label>
+            <input type="text" name="visitor_closeness" id="visitor_closeness">
+        </div>
+
+        <div class="visitor_form_group">
+            <label for="visitor_roomnumber">Room Number</label>
+            <input type="text" name="visitor_roomnumber" id="visitor_roomnumber">
+        </div>
+
+        <div class="visitor_form_group">
+            <label for="visitor_entry">Entry Time</label>
+            <input type="time" name="visitor_entry" id="visitor_entry">
+        </div>
+
+        <div class="visitor_form_group">
+            <label for="visitor_exit">Exit Time</label>
+            <input type="time" name="visitor_exit" id="visitor_exit">
+        </div>
+
+        <div class="visitor_form_group">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
 </section>
 {% endblock %}

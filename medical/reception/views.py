@@ -50,6 +50,13 @@ def existing_patient(request):
     return render(request, 'reception/existing_patient.html', {'patient': this_patient, "error_message": error_message})
 
 def emergency(request):
+    if request.method == "POST":
+        admission_datetime = request.POST['admission_datetime']
+        patient_name = request.POST['patient_name']
+        patient_condition = request.POST['patient_condition']
+
+        return HttpResponse("Emergency patient has been admitted successfully!")
+
     return render(request, 'reception/emergency.html')
 
 def visitors(request):

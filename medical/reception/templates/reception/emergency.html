@@ -2,17 +2,41 @@
 
 {% load static %}
 
-
-
 {% block page_title %}
-Emergcency{% endblock %}
+Emergency Patient Admission
+{% endblock %}
+
 
 {% block content %}
 
+{% block css-styles %}
+    <link rel="stylesheet" href="{% static 'reception/styles.css' %}">
+{% endblock %}
+
+
 <section id="welcome">
-    <header id="main-navigation">
-        <h2><a href="">priority patient</a></h2>
-        
+    <header class="emergency-header">
+        <h2><a href="#">Emergency Patient Admission</a></h2>
     </header>
+    <form action="" method="post" class="emergency-form-container">
+        {% csrf_token %}
+        
+        <!-- Admission Date and Time -->
+        <div class="emergency-form-group">
+            <label for="admission_datetime">Admission Date and Time:</label>
+            <input type="datetime-local" name="admission_datetime" id="admission_datetime" required>
+        </div>
+
+        <!-- Patient Condition -->
+        <div class="emergency-form-group">
+            <label for="patient_condition">Condition/Issue:</label>
+            <textarea name="patient_condition" id="patient_condition" rows="4" required></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="emergency-form-group">
+            <button type="submit" class="emergency-form-button">Admit Patient</button>
+        </div>
+    </form>
 </section>
 {% endblock %}
