@@ -21,6 +21,12 @@ visitor checkin{% endblock %}
     </header>
 
     <form action="" method="post">
+        {% csrf_token %}
+
+        <div class="visitor_form_group">
+            <label for="visitor_patient_id">Patient ID:</label>
+            <input type="text" name="visitor_patient_id" id="visitor_patient_id" required><br>
+        </div>
 
         <div class="visitor_form_group">
             <label for="visitor_tc">TC:</label>
@@ -35,11 +41,6 @@ visitor checkin{% endblock %}
         <div class="visitor_form_group">
             <label for="visitor_surname">Surname:</label>
             <input type="text" name="visitor_surname" id="visitor_surname" required><br>
-        </div>
-
-        <div class="visitor_form_group">
-            <label for="visitor_phone">Phone:</label>
-            <input type="tel" name="visitor_phone" id="visitor_phone"  placeholder="+90 (5_ _) (_ _ _) (_ _) (_ _)" required><br>
         </div>
 
         <div class="visitor_form_group">

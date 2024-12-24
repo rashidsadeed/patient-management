@@ -84,7 +84,8 @@ class Visitor(models.Model):
     patient = models.ForeignKey(
         Patient, 
         on_delete=models.CASCADE, 
-        related_name='visitors'  # Allows reverse lookup (patient.visitors.all())
+        to_field='patient_id',
+#        related_name='visitors'  # Allows reverse lookup (patient.visitors.all())
     )
     patient_closeness = models.CharField(max_length=50)
     patient_room = models.IntegerField()

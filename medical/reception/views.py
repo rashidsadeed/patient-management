@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Employee, Department, Manages, WorksIn, Patient, Doctor, AppointmentMakes, Receptionist
+from .models import Employee, Department, Manages, WorksIn, Patient, Doctor, AppointmentMakes, Receptionist, Visitor
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 
@@ -89,13 +89,45 @@ def emergency(request):
 
     return render(request, 'reception/emergency.html')
 
+
 def visitors(request):
-    return render(request, 'reception/visitor_management.html')
+    success = None
+    if request.method == "POST":
+        visitor_patient_id = request.POST['visitor_patient_id']
+        visitor_tc = request.POST['visitor_tc']
+        visitor_name = request.POST['visitor_name']
+        visitor_surname = request.POST['visitor_surname']
+        visitor_closeness = request.POST['visitor_closeness']
+        visitor_roomnumber = request.POST['visitor_roomnumber']
+        visitor_entry = request.POST['visitor_entry']
+        visitor_exit = request.POST['visitor_exit']
+
+        # Assuming you have a Visitor model and you want to save the data
+        try:
+            patient = Patient.objects.get(patient_id=visitor_patient_id)
+            visitor = Visitor(
+                patient=patient,
+                visitor_tc=visitor_tc,
+                visitor_name=visitor_name,
+                visitor_surname=visitor_surname,
+                patient_closeness=visitor_closeness,
+                patient_room=visitor_roomnumber,
+                visitor_entry_time=visitor_entry,
+                visitor_exit_time=visitor_exit
+            )
+            visitor.save()
+            success = True
+            return HttpResponse("Visitor information saved successfully.")
+        except Patient.DoesNotExist:
+            return HttpResponse("Patient not found.")
+
+    return render(request, 'reception/visitor_management.html', {"success": success})
 
 def appointments_and_reservations(request):
     doc_surname = request.GET.get('doc_name')
     patient_tc = request.GET.get('patient_tc')
     matching_appointments = None
+    context = {}
 
     if doc_surname and patient_tc:
         try:
