@@ -1,10 +1,36 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Employee, Department, Manages, WorksIn, Patient, Doctor, AppointmentMakes
+from .models import Employee, Department, Manages, WorksIn, Patient, Doctor, AppointmentMakes, Receptionist
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+def login_view(request):
+    if request.method == 'POST':
+        emp_id = request.POST.get('employee_id')
+        password = request.POST.get('password')
+
+        try:
+            receptionist = Receptionist.objects.get(emp_id=emp_id, password=password)
+            if receptionist is not None:
+                request.session['emp_id'] = receptionist.emp_id.emp_id
+                request.session['emp_name'] = f"{receptionist.emp_id.emp_name} {receptionist.emp_id.emp_surname}"
+                return redirect('index')
+            else:
+                return HttpResponse(f"You are not authorized to access this page.")
+        except Receptionist.DoesNotExist:
+            return HttpResponse("Invalid credentials. Please try again.")
+    return render(request, 'reception/login.html')
+
+
 def index(request):
-    return render(request, 'reception/home.html')
+    emp_id = request.session.get('emp_id')
+    emp_name = request.session.get('emp_name')
+    context = {
+        'emp_id': emp_id,
+        'emp_name': emp_name
+    }
+    return render(request, 'reception/home.html', context)
 
 def new_patient(request):
     success = None
@@ -67,4 +93,21 @@ def visitors(request):
     return render(request, 'reception/visitor_management.html')
 
 def appointments_and_reservations(request):
-    return render(request, 'reception/doctor_room_availavility.html')
+    doc_surname = request.GET.get('doc_name')
+    patient_tc = request.GET.get('patient_tc')
+    matching_appointments = None
+
+    if doc_surname and patient_tc:
+        try:
+            doctor = Doctor.objects.get(doc_id__emp_surname=doc_surname)
+            patient = Patient.objects.get(patient_tc=patient_tc)
+            matching_appointments = AppointmentMakes.objects.filter(doc_id=doctor, patient_id=patient.patient_id)
+        except Doctor.DoesNotExist or Patient.DoesNotExist or AppointmentMakes.DoesNotExist:
+            return HttpResponse("entry not found.")
+        
+        context = {
+            'appointments': matching_appointments,
+            'doctor': doctor,
+            'patient': patient
+        }
+    return render(request, 'reception/doctor_room_availavility.html', context)

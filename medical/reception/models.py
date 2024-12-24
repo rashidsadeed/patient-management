@@ -10,7 +10,16 @@ class Employee(models.Model):
     profession = models.CharField(max_length=50)
 
     def __str__(self):
-        return f"{self.emp_name} {self.emp_surname}"
+        return f"{self.emp_id}"
+    
+
+class Receptionist(models.Model):
+    emp_id = models.OneToOneField(Employee,on_delete=models.CASCADE, to_field="emp_id", primary_key=True)
+    password = models.CharField(max_length=255)
+
+    def __str__(self):
+        return f"{self.emp_id}"
+
     
 class Department(models.Model):
     dept_id = models.AutoField(primary_key=True)

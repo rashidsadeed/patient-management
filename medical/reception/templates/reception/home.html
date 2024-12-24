@@ -30,8 +30,8 @@
         </div>
         <div class="user-info">
             <div class="user-details">
-                <div class="user-name">Biyzanur</div>
-                <div class="user-id">534563</div>
+                <div class="user-name">{{ emp_name }}</div>
+                <div class="user-id">{{emp_id}}</div>
             </div>
             <div class="icon-container">
                 <div class="icon"></div>
@@ -54,7 +54,7 @@
                 <a href="{% url  "visitors" %}">Visitor Management
                 </a></div>
             <div class="button button-5">
-                <a href="{% url  "appointments_and_reservations" %}">Doctor/Room Availability
+                <a href="{% url  "appointments_and_reservations" %}">Appointments and Reservations
                 </a></div>
         </div>
     </div>

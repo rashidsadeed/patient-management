@@ -42,9 +42,10 @@ Patient information{% endblock %}
     </form>
 </section>
 
-<section id="patient_info">
+<section id="patient_info_section">
    
     <h2>Search Results</h2>
+<container id="patient_info">
     {% if error_message %}
         <p><strong>{{ error_message }}</strong></p>
     {% elif patient %}
@@ -56,11 +57,10 @@ Patient information{% endblock %}
             <li>{{ patient.patient_address }}</li>
             <li>{{ patient.patient_birthdate }}</li>
             <li>{{ patient.gender }}</li>
-
-
-
     </ul>
     {% endif %}
+</container>
+    
 
 </section>
 
