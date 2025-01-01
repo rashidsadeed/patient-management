@@ -2,10 +2,9 @@
 
 {% load static %}
 
-
-
 {% block page_title %}
-appointment and rooms{% endblock %}
+appointment and rooms
+{% endblock %}
 
 {% block content %}
 
@@ -13,43 +12,46 @@ appointment and rooms{% endblock %}
     <link rel="stylesheet" href="{% static 'reception/styles.css' %}">
 {% endblock %}
 
-<section id="welcome">
-    <header id="main-navigation">
-        <h1>Appointment</h1>
-        
-    </header>
-    <form action="" method="GET">
+<div class="appointment-wrapper">
+    <!-- Appointment Section  -->
+    <section id="appointment_section">
+        <header>
+            <h1>Appointment</h1>
+        </header>
+        <form action="" method="GET">
+            <div class="appointment_form_group">
+                <label for="doc_name">Doctor Name</label>
+                <input type="text" name="doc_name" id="doc_name" placeholder="Enter Doctor Name">
+            </div>
+            <div class="appointment_form_group">
+                <label for="patient_tc">Patient TC</label>
+                <input type="text" name="patient_tc" id="patient_tc" placeholder="Enter TC">
+            </div>
+            <div class="appointment_form_group">
+                <button type="submit">Search</button>
+            </div>
+        </form>
+    </section>
 
-        <div class="appointment_form_group">
-            <label for="doc_name">Doctor Name</label>
-            <input type="text" name="doc_name" id="doc_name" placeholder="Enter Doctor Name">
+    <!-- Current Appointments Section  -->
+    <section id="current_appointments">
+        <header>
+            <h2>Current Appointments</h2>
+        </header>
+        {% if current_appointments %}
+        <div class="appointment-list">
+            {% for appointment in current_appointments %}
+            <div class="appointment-card">
+                <p><strong>Doctor:</strong> {{ appointment.doctor_name }}</p>
+                <p><strong>Date:</strong> {{ appointment.appointment_date }}</p>
+                <p><strong>Time:</strong> {{ appointment.appointment_time }}</p>
+            </div>
+            {% endfor %}
         </div>
+        {% else %}
+        <p>No appointments available.</p>
+        {% endif %}
+    </section>
+</div>
 
-        <div class="appointment_form_group">
-            <label for="patient_tc">Patient TC</label>
-            <input type="text" name="patient_tc" id="patient_tc" placeholder="Enter TC">
-        </div>
-
-        <div class="appointment_form_group">
-            <button type="submit">Search</button>
-        </div>
-    </form>
-</section>
-
-<section id="patient_info">
-   
-   
-    {% if appointments %}
-    <h2>Matching Appointments</h2>
-    <ul>
-        {% for appointment in appointments %}
-            <li>Date:{{ appointment.appointment_date }}</li>
-            <li>Time:{{ appointment.appointment_time }}</li>
-            <li>Patient_ID:{{ patient.patient_id }}</li>
-        {%endfor%}
-
-
-    </ul>
-    {% endif %}
-</section>
 {% endblock %}

@@ -2,10 +2,9 @@
 
 {% load static %}
 
-
-
 {% block page_title %}
-Patient information{% endblock %}
+Search Patient
+{% endblock %}
 
 {% block content %}
 
@@ -13,56 +12,55 @@ Patient information{% endblock %}
     <link rel="stylesheet" href="{% static 'reception/styles.css' %}">
 {% endblock %}
 
+<div class="search-patient-wrapper">
+    <!-- Search Patient Section (Left) -->
+    <section id="search_section" class="section-container">
+        <header>
+            <h2>Search Patient</h2>
+        </header>
+        <form action="" method="GET">
+            <div class="search_form_group">
+                <label for="id">Search by ID:</label>
+                <input type="text" name="search_id" id="search_form_group" placeholder="Enter ID">
+            </div>
 
-<section id="search_section">
-    <header id="main-navigation">
-        <h2><a href="">search Patient</a></h2>
-        
-    </header>
+            <div class="search_form_group">
+                <label for="search_name">Search by Name:</label>
+                <input type="text" name="search_name" id="search_name" placeholder="Enter Name">
+            </div>
 
-    <form action="" method="GET">
-        <div class="search_form_group">
-            <label for="id">Search by ID:</label>
-            <input type="text" name="search_id" id="search_form_group" placeholder="Enter ID">
-        </div>
+            <div class="search_form_group">
+                <label for="search_surname">Search by Surname:</label>
+                <input type="text" name="search_surname" id="search_surname" placeholder="Enter surname">
+            </div>
 
-        <div class="search_form_group">
-            <label for="search_name">Name</label>
-            <input type="text" name="search_name" id="search_name" placeholder="Enter Name">
-        </div>
+            <div class="search_form_group">
+                <button type="submit">Search</button>
+            </div>
+        </form>
+    </section>
 
-        <div class="search_form_group">
-            <label for="search_surname">Search by Surname:</label>
-            <input type="text" name="search_surname" id="search_surname" placeholder="Enter surname">
-        </div>
-
-        <div class="search_form_group">
-            <button type="submit">Search</button>
-        </div>
-    </form>
-</section>
-
-<section id="patient_info_section">
-   
-    <h2>Search Results</h2>
-<container id="patient_info">
-    {% if error_message %}
+    <!-- Search Results Section (Right) -->
+    <section id="patient_info_section" class="section-container">
+        <header>
+            <h2>Search Results</h2>
+        </header>
+        {% if error_message %}
         <p><strong>{{ error_message }}</strong></p>
-    {% elif patient %}
-    <ul>
-            <li>{{ patient.patient_id }}</li>
-            <li>{{ patient.patient_name }}</li>
-            <li>{{ patient.patient_surname }}</li>
-            <li>{{ patient.patient_phone }}</li>
-            <li>{{ patient.patient_address }}</li>
-            <li>{{ patient.patient_birthdate }}</li>
-            <li>{{ patient.gender }}</li>
-    </ul>
-    {% endif %}
-</container>
-    
-
-</section>
+        {% elif patient %}
+        <ul>
+            <li><strong>ID:</strong> {{ patient.patient_id }}</li>
+            <li><strong>Name:</strong> {{ patient.patient_name }}</li>
+            <li><strong>Surname:</strong> {{ patient.patient_surname }}</li>
+            <li><strong>Phone:</strong> {{ patient.patient_phone }}</li>
+            <li><strong>Address:</strong> {{ patient.patient_address }}</li>
+            <li><strong>Birthdate:</strong> {{ patient.patient_birthdate }}</li>
+            <li><strong>Gender:</strong> {{ patient.gender }}</li>
+        </ul>
+        {% else %}
+        <p>No patient data available.</p>
+        {% endif %}
+    </section>
+</div>
 
 {% endblock %}
-

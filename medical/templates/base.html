@@ -14,9 +14,9 @@
 <body>
 
     <div id="sidebar" class="sidenav">
-        <a href="/appointment">Appoinment</a>
-        <a href="room">Room Reservations</a>
-        <a href="visitor">Visitors</a>
+        <a href="{% url 'index'%}">Home</a>
+        <a href="{% url 'appointments_and_reservations'%}">Appointment and Reservations</a>
+        <a href="{% url 'new_patient'%}">New Patient</a>
     </div>
 
     <!-- Toggle Button -->

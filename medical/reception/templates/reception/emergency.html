@@ -23,9 +23,15 @@ Emergency Patient Admission
         
         <!-- Admission Date and Time -->
         <div class="emergency-form-group">
-            <label for="admission_datetime">Admission Date and Time:</label>
-            <input type="datetime-local" name="admission_datetime" id="admission_datetime" required>
+            <label for="admission_datetime">Admission Date </label>
+            <input type="date" name="admission_datetime" id="admission_datetime" required>
         </div>
+
+        <!--  Admission Time   -->
+          <div class="emergency-form-group">
+            <label for="admission_time">Admission Time</label>
+            <input type="time" name="admission_time" id="admission_time">
+          </div>
 
         <!-- Patient Condition -->
         <div class="emergency-form-group">
